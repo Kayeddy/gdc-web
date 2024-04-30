@@ -21,8 +21,8 @@ const World = () => (
       <TitleText
         title={
           <>
-            Conectate con clubbers alrededor de Latinoamerica. Haz parte de una
-            comunidad unica en el planeta
+            Conéctate con clubbers alrededor de Latinoamérica. Haz parte de una
+            comunidad única en el planeta
           </>
         }
         textStyles="text-center"

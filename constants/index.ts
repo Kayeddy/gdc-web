@@ -36,8 +36,8 @@ export const collabPlatforms = [
   },
   {
     id: "2",
-    title: "Discord",
-    icon: "/discord.png",
+    title: "Connect2Pet",
+    icon: "/c2p_mobile.webp",
     width: 36,
     height: 28,
   },

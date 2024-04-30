@@ -7,6 +7,7 @@ import { features } from "../constants";
 import { planetVariants, staggerContainer, fadeIn } from "../utils/motion";
 import { TitleText, TypingText } from "@/components/CustomTexts";
 import Features from "@/components/Features";
+import Link from "next/link";
 
 const commonImgStyles =
   "bg-[#fff]/15 border border-[#fff]/15 rounded-xl w-14 h-14 object-contain p-1";
@@ -46,50 +47,69 @@ const WhatsNew = () => (
             className="object-cover w-24 h-24 absolute animate-pulse"
           />
 
-          <img
-            src="/cambly_sm.png"
-            alt=""
-            className={`absolute top-0 left-1 ${commonImgStyles}`}
-          />
+          <Link href='https://www.cambly.com' target="_blank">
+            <img
+              src="/cambly_sm.png"
+              alt=""
+              className={`absolute top-0 left-1 ${commonImgStyles}`}
+            />
+          </Link>
 
-          <img
-            src="codecademy_community.webp"
-            alt=""
-            className={`absolute top-0 right-1 ${commonImgStyles}`}
-          />
+          <Link href="https://www.codecademy.com" target="_blank">
+            <img
+              src="codecademy_community.webp"
+              alt=""
+              className={`absolute top-0 right-1 ${commonImgStyles}`}
+            />
+          </Link>
 
-          <img
-            src="globant_sm.png"
-            alt=""
-            className={`absolute bottom-0 right-1 ${commonImgStyles}`}
-          />
+          <Link href="https://www.globant.com" target="_blank">
+            <img
+              src="globant_sm.png"
+              alt=""
+              className={`absolute bottom-0 right-1 ${commonImgStyles}`}
+            />
+          </Link>
 
-          <img
-            src="discord.png"
-            alt=""
-            className={`absolute bottom-0 left-1 ${commonImgStyles}`}
-          />
+          <Link href="https://connect2pet.app" target="_blank">
+            <img
+              src="c2p_mobile.webp"
+              alt=""
+              className={`absolute bottom-0 left-1 ${commonImgStyles}`}
+            />
+          </Link>
 
-          <img
-            src="intelectolegalabogados.png"
-            alt=""
-            className={`absolute top-0 ${commonImgStyles}`}
-          />
-          <img
-            src="medeo.png"
-            alt=""
-            className={`absolute bottom-0 ${commonImgStyles}`}
-          />
-          <img
-            src="treetech.png"
-            alt=""
-            className={`absolute left-0 ${commonImgStyles}`}
-          />
-          <img
-            src="google_cloud_sm.png"
-            alt=""
-            className={`absolute right-0 ${commonImgStyles}`}
-          />
+          <Link href="https://www.intelectolegalabogados.co" target="_blank">
+            <img
+              src="intelectolegalabogados.png"
+              alt=""
+              className={`absolute top-0 ${commonImgStyles}`}
+            />
+          </Link>
+
+          <Link href="https://www.medeo-edu.com" target="_blank">
+            <img
+              src="medeo.png"
+              alt=""
+              className={`absolute bottom-0 ${commonImgStyles}`}
+            />
+          </Link>
+
+          <Link href="https://www.treetechsas.com" target="_blank">
+            <img
+              src="treetech.png"
+              alt=""
+              className={`absolute left-0 ${commonImgStyles}`}
+            />
+          </Link>
+
+          <Link href="https://cloud.google.com/gcp" target="_blank">
+            <img
+              src="google_cloud_sm.png"
+              alt=""
+              className={`absolute right-0 ${commonImgStyles}`}
+            />
+          </Link>
         </div>
       </motion.div>
     </motion.div>
