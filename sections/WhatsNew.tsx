@@ -47,67 +47,67 @@ const WhatsNew = () => (
             className="object-cover w-24 h-24 absolute animate-pulse"
           />
 
-          <Link href='https://www.cambly.com' target="_blank">
+          <Link href='https://www.cambly.com' target="_blank" className={`absolute top-0 left-1`}>
             <img
               src="/cambly_sm.png"
               alt=""
-              className={`absolute top-0 left-1 ${commonImgStyles}`}
+              className={`${commonImgStyles}`}
             />
           </Link>
 
-          <Link href="https://www.codecademy.com" target="_blank">
+          <Link href="https://www.codecademy.com" target="_blank" className={`absolute top-0 right-1`}>
             <img
               src="codecademy_community.webp"
               alt=""
-              className={`absolute top-0 right-1 ${commonImgStyles}`}
+              className={`${commonImgStyles}`}
             />
           </Link>
 
-          <Link href="https://www.globant.com" target="_blank">
+          <Link href="https://www.globant.com" target="_blank" className={`absolute bottom-0 right-1`}>
             <img
               src="globant_sm.png"
               alt=""
-              className={`absolute bottom-0 right-1 ${commonImgStyles}`}
+              className={`${commonImgStyles}`}
             />
           </Link>
 
-          <Link href="https://connect2pet.app" target="_blank">
+          <Link href="https://connect2pet.app" target="_blank" className={`absolute bottom-0 left-1`}>
             <img
               src="c2p_mobile.webp"
               alt=""
-              className={`absolute bottom-0 left-1 ${commonImgStyles}`}
+              className={`${commonImgStyles}`}
             />
           </Link>
 
-          <Link href="https://www.intelectolegalabogados.co" target="_blank">
+          <Link href="https://www.intelectolegalabogados.co" target="_blank" className={`absolute top-0`}>
             <img
               src="intelectolegalabogados.png"
               alt=""
-              className={`absolute top-0 ${commonImgStyles}`}
+              className={`${commonImgStyles}`}
             />
           </Link>
 
-          <Link href="https://www.medeo-edu.com" target="_blank">
+          <Link href="https://www.medeo-edu.com" target="_blank" className={`absolute bottom-0`}>
             <img
               src="medeo.png"
               alt=""
-              className={`absolute bottom-0 ${commonImgStyles}`}
+              className={`${commonImgStyles}`}
             />
           </Link>
 
-          <Link href="https://www.treetechsas.com" target="_blank">
+          <Link href="https://www.treetechsas.com" target="_blank" className={`absolute left-0`}>
             <img
               src="treetech.png"
               alt=""
-              className={`absolute left-0 ${commonImgStyles}`}
+              className={`${commonImgStyles}`}
             />
           </Link>
 
-          <Link href="https://cloud.google.com/gcp" target="_blank">
+          <Link href="https://cloud.google.com/gcp" target="_blank" className={`absolute right-0`}>
             <img
               src="google_cloud_sm.png"
               alt=""
-              className={`absolute right-0 ${commonImgStyles}`}
+              className={`${commonImgStyles}`}
             />
           </Link>
         </div>
