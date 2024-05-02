@@ -9,14 +9,32 @@ import {
   textVariant,
 } from "../utils/motion";
 
+const videoVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 1.5 } }, // Adjust duration for effect timing
+};
+
 const Hero = () => (
-  <section className={`yPaddings paddings sm:pl-16 pl-6 lg:min-h-screen`}>
+  <section className={`min-h-screen overflow-hidden relative`}>
+    <motion.video
+      autoPlay
+      muted
+      loop
+      initial="hidden"
+      animate="visible"
+      variants={videoVariants}
+      className="absolute w-screen h-screen object-cover"
+    >
+      <source src="intro_video.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </motion.video>
+    <div className="absolute w-screen h-screen bg-black/90 z-20"></div>
     <motion.div
       variants={staggerContainer()}
       initial="hidden"
       animate="show"
       viewport={{ once: false, amount: 0.25 }}
-      className={`innerWidth mx-auto flex flex-col`}
+      className={`innerWidth mx-auto flex flex-col yPaddings paddings sm:pl-16 pl-6 absolute z-50`}
     >
       <div className="flex justify-center items-center flex-col relative z-10">
         <motion.h1
@@ -55,24 +73,6 @@ const Hero = () => (
         variants={slideIn("right", "tween", 0.2, 1)}
         className="relative w-full mt-14"
       >
-        {/* <div className="absolute w-[90%] h-[300px] hero-gradient rounded-tl-[140px] z-[0] -top-[30px]" />
-
-        <img
-          src="/cover.png"
-          alt="hero_cover"
-          className="w-[90%] sm:h-[500px] h-[350px] object-cover rounded-tl-[140px] z-10 relative"
-        />
-
-        <a href="#explore">
-          <div className="w-full flex justify-end sm:-mt-[70px] -mt-[50px] pr-[40px] relative z-10">
-            <img
-              src="/isologo.webp"
-              alt="stamp"
-              className="sm:w-[155px] w-[100px] sm:h-[155px] h-[100px] object-contain"
-            />
-          </div>
-        </a> */}
-
         <motion.p
           variants={textVariant(1.2)}
           className="mt-[8px] font-normal sm:text-[32px] text-[20px] text-center text-secondary-white flex flex-col"
@@ -82,7 +82,7 @@ const Hero = () => (
           </span>
           <span>
             Desarrolla habilidades del mundo real, conéctate con compañeros de
-            tu Universidad, con mentores de la industria y haz que tu esa idea
+            tu universidad, con mentores de la industria y haz que tu esa idea
             que tienes en la cabeza despegue
           </span>
         </motion.p>
