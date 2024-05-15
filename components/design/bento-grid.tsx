@@ -1,5 +1,16 @@
+// Utils imports
 import { cn } from "@/utils/cn";
 
+/**
+ * A container component that sets up a responsive grid layout. It uses the `cn` utility function
+ * to combine predefined and custom class names for styling. This grid is typically used to organize
+ * child components (like BentoGridItems) in a structured and visually appealing manner.
+ *
+ * @param {object} props - Component props.
+ * @param {string} [props.className] - Optional custom CSS class to apply to the grid container for additional styling.
+ * @param {React.ReactNode} [props.children] - Child components to be rendered within the grid layout.
+ * @returns {React.ReactElement} A div element styled as a grid containing child elements.
+ */
 export const BentoGrid = ({
   className,
   children,
@@ -19,6 +30,19 @@ export const BentoGrid = ({
   );
 };
 
+/**
+ * Represents a single grid item within a BentoGrid. This component is flexible, allowing for
+ * the inclusion of a header, icon, title, and description. It also responds to hover interactions
+ * by applying a shadow effect, enhancing the user interface experience.
+ *
+ * @param {object} props - Component props.
+ * @param {string} [props.className] - Optional custom CSS class to apply for additional styling.
+ * @param {string | React.ReactNode} [props.title] - The title of the grid item, which can be a string or any React node.
+ * @param {string | React.ReactNode} [props.description] - Optional description for the grid item, providing more detail.
+ * @param {React.ReactNode} [props.header] - Optional header content, which can be used to place more prominent information or images.
+ * @param {React.ReactNode} [props.icon] - An optional icon to appear alongside the title and description.
+ * @returns {React.ReactElement} A styled div element representing the grid item with optional interactive elements.
+ */
 export const BentoGridItem = ({
   className,
   title,

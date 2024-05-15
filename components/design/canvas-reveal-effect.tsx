@@ -1,9 +1,56 @@
 "use client";
+
+// Utils imports
 import { cn } from "@/utils/cn";
+
+// ThreeJS imports
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import React, { useMemo, useRef } from "react";
 import * as THREE from "three";
 
+// React imports
+import React, { useMemo, useRef } from "react";
+
+interface DotMatrixProps {
+  colors?: number[][];
+  opacities?: number[];
+  totalSize?: number;
+  dotSize?: number;
+  shader?: string;
+  center?: ("x" | "y")[];
+}
+
+interface ShaderProps {
+  source: string;
+  uniforms: {
+    [key: string]: {
+      value: number[] | number[][] | number;
+      type: string;
+    };
+  };
+  maxFps?: number;
+}
+
+type Uniforms = {
+  [key: string]: {
+    value: number[] | number[][] | number;
+    type: string;
+  };
+};
+
+/**
+ * A component that renders a dynamic visual effect on a canvas using shaders. This component
+ * is designed to enhance visual presentation with a matrix of dots that are animated based
+ * on a shader program. It utilizes React Three Fiber for rendering WebGL content.
+ *
+ * @param {object} props - Component properties.
+ * @param {number} [props.animationSpeed=0.4] - Controls the speed of the animation effect.
+ * @param {number[]} [props.opacities=[0.3, 0.5, 0.8, 1]] - Array of opacity values for animation stages.
+ * @param {number[][]} [props.colors=[[0, 255, 255]]] - RGB values for colors used in the animation.
+ * @param {string} [props.containerClassName] - Optional className for styling the container.
+ * @param {number} [props.dotSize] - The size of each dot in the matrix.
+ * @param {boolean} [props.showGradient=true] - Determines if a gradient overlay is shown.
+ * @returns {React.ReactElement} - A styled div element containing the animated canvas and optional gradient overlay.
+ */
 export const CanvasRevealEffect = ({
   animationSpeed = 0.4,
   opacities = [0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1],
@@ -48,15 +95,20 @@ export const CanvasRevealEffect = ({
   );
 };
 
-interface DotMatrixProps {
-  colors?: number[][];
-  opacities?: number[];
-  totalSize?: number;
-  dotSize?: number;
-  shader?: string;
-  center?: ("x" | "y")[];
-}
-
+/**
+ * Configures and renders a matrix of dots on a WebGL canvas, using a custom shader for effects. This component
+ * is primarily used within the CanvasRevealEffect to apply complex visual transitions and animations to a grid
+ * of dots, each representing a pixel manipulated via GLSL shaders.
+ *
+ * @param {DotMatrixProps} props - The props for configuring the dot matrix.
+ * @param {number[][]} [props.colors=[[0, 0, 0]]] - Array of RGB color sets for dots.
+ * @param {number[]} [props.opacities=[0.04, 0.08, 0.14]] - Opacity values for different dot layers.
+ * @param {number} [props.totalSize=4] - The size of the canvas in virtual units.
+ * @param {number} [props.dotSize=2] - The size of each individual dot.
+ * @param {string} [props.shader=""] - Custom GLSL shader code to apply specific graphical effects.
+ * @param {("x" | "y")[]} [props.center=["x", "y"]] - Specifies the axis on which the dots should be centered.
+ * @returns {React.ReactElement} - A component that uses a custom shader to render a matrix of animated dots.
+ */
 const DotMatrix: React.FC<DotMatrixProps> = ({
   colors = [[0, 0, 0]],
   opacities = [0.04, 0.04, 0.04, 0.04, 0.04, 0.08, 0.08, 0.08, 0.08, 0.14],
@@ -175,12 +227,16 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
   );
 };
 
-type Uniforms = {
-  [key: string]: {
-    value: number[] | number[][] | number;
-    type: string;
-  };
-};
+/**
+ * Creates and manages a custom Three.js ShaderMaterial for rendering effects in a WebGL context.
+ * This component is tailored to receive uniform values and a shader source code to render visual effects dynamically.
+ *
+ * @param {object} props - Component properties.
+ * @param {string} props.source - GLSL source code for the fragment shader.
+ * @param {Uniforms} props.uniforms - Uniform variables to be passed to the shader.
+ * @param {number} [props.maxFps=60] - Limits the frame rate to reduce rendering load.
+ * @returns {React.ReactElement} - A Three.js mesh with a plane geometry and custom shader material.
+ */
 const ShaderMaterial = ({
   source,
   uniforms,
@@ -289,6 +345,16 @@ const ShaderMaterial = ({
   );
 };
 
+/**
+ * A wrapper component for `ShaderMaterial`, facilitating the integration with the React Three Fiber library.
+ * It sets up a Canvas environment where the custom shader material can be rendered, allowing for complex visual effects.
+ *
+ * @param {ShaderProps} props - Component properties.
+ * @param {string} props.source - GLSL source code for the fragment shader.
+ * @param {Uniforms} props.uniforms - Definitions of uniform variables to be passed to the shader.
+ * @param {number} [props.maxFps=60] - Maximum frames per second to render, useful for performance optimization.
+ * @returns {React.ReactElement} - A Canvas component from React Three Fiber that renders the custom ShaderMaterial.
+ */
 const Shader: React.FC<ShaderProps> = ({ source, uniforms, maxFps = 60 }) => {
   return (
     <Canvas className="absolute inset-0  h-full w-full">
@@ -296,13 +362,3 @@ const Shader: React.FC<ShaderProps> = ({ source, uniforms, maxFps = 60 }) => {
     </Canvas>
   );
 };
-interface ShaderProps {
-  source: string;
-  uniforms: {
-    [key: string]: {
-      value: number[] | number[][] | number;
-      type: string;
-    };
-  };
-  maxFps?: number;
-}

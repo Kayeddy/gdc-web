@@ -1,15 +1,16 @@
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import About from "@/sections/About";
-import Explore from "@/sections/Explore";
-import GetStarted from "@/sections/GetStarted";
-import Hero from "@/sections/Hero";
-import WhatsNew from "@/sections/WhatsNew";
-import World from "@/sections/World";
+// Components imports
+import Footer from "@/components/shared/Footer";
+import Navbar from "@/components/shared/Navbar";
+import About from "@/sections/home/About";
+import Explore from "@/sections/home/Explore";
+import GetStarted from "@/sections/home/GetStarted";
+import Hero from "@/sections/home/Hero";
+import WhatsNew from "@/sections/home/WhatsNew";
+import World from "@/sections/home/World";
 
-export default function Home() {
+export default async function Home() {
   return (
-    <div className="overflow-hidden bg-primary-black">
+    <div className="overflow-hidden bg-primary-black" suppressHydrationWarning>
       <Navbar />
       <Hero />
       <div className="relative">

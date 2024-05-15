@@ -129,7 +129,7 @@ export const fadeIn = (
 
 export const planetVariants = (direction: Direction): Variants => ({
   hidden: {
-    x: direction === "left" ? "-100%" : "150%",
+    x: direction === "left" ? "-110%" : "150%",
     rotate: 120,
     transition: {
       type: "spring",
@@ -182,6 +182,129 @@ export const footerVariants: Variants = {
       type: "spring",
       stiffness: 80,
       delay: 0.5,
+    },
+  },
+};
+
+// Sidebar
+export const sidebarVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    x: -50,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 140,
+    },
+  },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      delay: 0,
+    },
+  },
+};
+
+export const sidebarChildrenVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: -50,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 140,
+    },
+  },
+  show: {
+    opacity: 1,
+    y: 50,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      delay: 0.5,
+      duration: 6,
+    },
+  },
+};
+
+// Onboarding
+
+export const dynamicOnboardingFormHandlerVariants = {
+  hidden: {
+    opacity: 0,
+    y: -50,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 140,
+    },
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      delay: 0.5,
+      duration: 2,
+    },
+  },
+};
+
+export const dynamicProfileSelectionFormVariants = ({
+  width,
+  breakpoint,
+  windowWidth,
+}: {
+  width: number;
+  breakpoint: number;
+  windowWidth: number;
+}) => {
+  return {
+    shrink: {
+      x: width >= breakpoint ? -windowWidth / 50 : 0,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        duration: 1,
+      },
+    },
+    unshrink: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        damping: 140,
+        duration: 1,
+      },
+    },
+  };
+};
+
+export const contentVariants = {
+  hidden: {
+    opacity: 0,
+    y: 50,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 30,
+    },
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 30,
+      delay: 0.3,
+      duration: 3,
     },
   },
 };
