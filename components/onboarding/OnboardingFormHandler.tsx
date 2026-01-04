@@ -174,6 +174,7 @@ Renders the appropriate onboarding form based on the selected profile type.
           userData={userData}
           onProfileTypeChange={handleProfileTypeChange}
           externallySelectedProfileType={selectedProfileType}
+          isSubmitting={isSubmitting}
         />
       </motion.div>
 
